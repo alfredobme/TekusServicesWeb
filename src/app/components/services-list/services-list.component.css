@@ -1,0 +1,77 @@
+.services-container {
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+mat-card {
+  padding: 10px;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.search-field {
+  width: 550px;
+  margin-bottom: 15px;
+}
+
+table {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.button-group {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.btn {
+  background-color: darkgrey;
+  transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+  background-color: lavender;
+}
+
+.button-detail {
+  min-width: 45px;
+  height: 30px;
+  padding: 0 8px;
+  font-size: 12px;
+  background-color: darkgrey;
+}
+
+.button-detail:hover {
+  background-color: lavender;
+}
+
+.providers-table td, 
+.providers-table th {
+  vertical-align: middle;
+}
+
+.detail-row {
+  height: auto;
+}
+
+.detail-container {
+  padding: 16px 32px;
+  border-top: 1px solid #ddd;
+  margin-top: -1px;
+  animation: expand 0.2s ease-out;
+}
+
+.title {
+  font-size: 20px;
+  color: rgb(11, 11, 163);
+}

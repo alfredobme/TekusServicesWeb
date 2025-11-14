@@ -1,0 +1,81 @@
+<div class="services-container">
+  <span class="title">Services</span>
+  <mat-card>
+    <div class="header-container">
+      <mat-form-field appearance="outline" class="search-field">
+        <input matInput (keyup)="applyFilter($event)" placeholder="...." />
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+      <div class="button-group">
+        <button mat-raised-button class="btn" (click)="newService()">New Service</button>
+      </div>
+    </div>
+    <table mat-table [dataSource]="dataSource" matSort multiTemplateDataRows class="mat-elevation-z8 providers-table">
+      <ng-container matColumnDef="countries">
+        <th mat-header-cell *matHeaderCellDef style="width: 40px;"></th>
+        <td mat-cell *matCellDef="let service" class="text-right">
+          <button mat-icon-button (click)="toggleRow(service)">
+            <mat-icon>
+              {{ expandedElement === service ? 'keyboard_arrow_down' : 'keyboard_arrow_right' }}
+            </mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let service">{{ service.name }}</td>
+      </ng-container>
+      <ng-container matColumnDef="hourlyrate">
+        <th mat-header-cell *matHeaderCellDef>HourlyRate</th>
+        <td mat-cell *matCellDef="let service" class="text-right">{{ service.hourlyRate }}</td>
+      </ng-container>
+      <ng-container matColumnDef="provider">
+        <th mat-header-cell *matHeaderCellDef>Provider</th>
+        <td mat-cell *matCellDef="let service">{{ service.providerName }}</td>
+      </ng-container>
+      <ng-container matColumnDef="active">
+        <th mat-header-cell *matHeaderCellDef>Active</th>
+        <td mat-cell *matCellDef="let service">{{ service.active ? 'Yes' : 'No' }}</td>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef style="text-align: right;"></th>
+        <td mat-cell *matCellDef="let service" class="text-right">
+          <button mat-stroked-button class="button-detail" (click)="serviceDetail(service)">---</button>
+        </td>
+      </ng-container>
+      <tr
+        mat-row
+        *matRowDef="let provider; columns: displayedColumns"
+        class="element-row"
+        [class.expanded]="expandedElement === provider"
+      ></tr>
+      <ng-container matColumnDef="expandedDetail">
+        <td mat-cell *matCellDef="let service" [attr.colspan]="displayedColumns.length">
+          <div class="detail-container" *ngIf="expandedElement === service">
+            <strong>Countries:</strong>
+            <ul *ngIf="service.countries && service.countries.length > 0; else noCountries">
+              <li>
+                <span class="countries">
+                  <ng-container *ngFor="let c of service.countries; let last = last">
+                    {{ c.name }}<span *ngIf="!last">, </span>
+                  </ng-container>
+                </span>
+              </li>
+            </ul>
+            <ng-template #noCountries>
+              <br><br>
+              <div class="no-services">No countries</div>
+            </ng-template>
+          </div>
+        </td>
+      </ng-container>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: ['expandedDetail']"
+        class="detail-row"
+      ></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    </table>
+    <mat-paginator [pageSize]="10" [pageSizeOptions]="[10, 20, 30]"></mat-paginator>
+  </mat-card>
+</div>

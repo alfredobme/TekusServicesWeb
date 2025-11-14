@@ -1,0 +1,17 @@
+html, body { height: 100%; }
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.blue-snackbar {
+    font-weight: bold;
+    text-align: center;
+    margin-top: 70px !important;
+  }
+  
+.custom-error-toast {
+  --mdc-snackbar-container-color: #f44336;
+}
+
+.custom-success-toast {
+  --mdc-snackbar-container-color: #4caf50 ;
+}

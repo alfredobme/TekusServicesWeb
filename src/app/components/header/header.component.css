@@ -1,0 +1,22 @@
+  mat-toolbar {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    background-color: white;
+  }
+  
+  .title {
+    font-size: 20px;
+    color: rgb(11, 11, 163);
+  }
+  
+  .spacer {
+    flex: 1;
+  }
+  
+  .logo {
+    width: 130px;
+    height: 50px;
+    background-color: transparent;
+  }
+  

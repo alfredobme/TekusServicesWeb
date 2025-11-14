@@ -1,0 +1,34 @@
+<h2 mat-dialog-title>Modify Provider</h2>
+<br>
+<mat-dialog-content>
+  <form [formGroup]="form" class="form-grid">
+    <mat-form-field appearance="outline">
+      <mat-label>Nit</mat-label>
+      <input matInput formControlName="nit">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Active</mat-label>
+      <mat-select formControlName="active">
+        <mat-option [value]="true">Yes</mat-option>
+        <mat-option [value]="false">No</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close class="green-button">Cancel</button>
+  <button mat-raised-button class="green-button" (click)="deleteProvider()">Delete</button>
+  <button mat-raised-button class="green-button" (click)="modifyProvider()">Save</button>
+</mat-dialog-actions>

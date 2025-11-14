@@ -1,0 +1,23 @@
+<mat-toolbar class="main-toolbar">
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <span class="title">Tekus Services</span>
+
+  <span class="spacer"></span>
+
+  <img src="assets/images/logo.png" class="logo">
+</mat-toolbar>
+
+<mat-menu #menu="matMenu">
+  <a mat-menu-item [routerLink]="'/providers-list'">
+    <mat-icon>business_center</mat-icon>
+    <span>Providers</span>
+  </a>
+
+  <a mat-menu-item [routerLink]="'/services-list'">
+    <mat-icon>build_circle</mat-icon>
+    <span>Services</span>
+  </a>  
+</mat-menu>

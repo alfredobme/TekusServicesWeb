@@ -1,0 +1,17 @@
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.green-button {
+  background-color: #6cbb6f !important;
+  color: white !important;
+}
+.green-button:hover {
+  background-color: #43A047 !important;
+}

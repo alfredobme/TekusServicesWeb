@@ -1,0 +1,86 @@
+<div class="providers-container">
+  <span class="title">Providers and Services</span>
+  <mat-card>
+    <div class="header-container">
+      <mat-form-field appearance="outline" class="search-field">
+        <input matInput (keyup)="applyFilter($event)" placeholder="...." />
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+      <div class="button-group">
+        <button mat-raised-button class="btn" (click)="newProvider()">New Provider</button>
+      </div>
+    </div>
+    <table mat-table [dataSource]="dataSource" matSort multiTemplateDataRows class="mat-elevation-z8 providers-table">
+      <ng-container matColumnDef="services">
+        <th mat-header-cell *matHeaderCellDef style="width: 40px;"></th>
+        <td mat-cell *matCellDef="let provider" class="text-right">
+          <button mat-icon-button (click)="toggleRow(provider)">
+            <mat-icon>
+              {{ expandedElement === provider ? 'keyboard_arrow_down' : 'keyboard_arrow_right' }}
+            </mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="nit">
+        <th mat-header-cell *matHeaderCellDef>Nit</th>
+        <td mat-cell *matCellDef="let provider">{{ provider.nit }}</td>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let provider">{{ provider.name }}</td>
+      </ng-container>
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let provider">{{ provider.email }}</td>
+      </ng-container>
+      <ng-container matColumnDef="active">
+        <th mat-header-cell *matHeaderCellDef>Active</th>
+        <td mat-cell *matCellDef="let provider">{{ provider.active ? 'Yes' : 'No' }}</td>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef style="text-align: right;"></th>
+        <td mat-cell *matCellDef="let provider" class="text-right">
+          <button mat-stroked-button class="button-detail" (click)="providerDetail(provider)">---</button>
+        </td>
+      </ng-container>
+      <tr
+        mat-row
+        *matRowDef="let provider; columns: displayedColumns"
+        class="element-row"
+        [class.expanded]="expandedElement === provider"
+      ></tr>
+<ng-container matColumnDef="expandedDetail">
+  <td mat-cell *matCellDef="let provider" [attr.colspan]="displayedColumns.length">
+    <div class="detail-container" *ngIf="expandedElement === provider">
+      <strong>Services:</strong>
+      <ul *ngIf="provider.services && provider.services.length > 0; else noServices">
+        <li *ngFor="let s of provider.services" 
+            [ngClass]="{ 'inactive-service': !s.active }">
+          <span class="countries">
+            <ng-container *ngFor="let c of s.countries; let last = last">
+              {{ c.name }}<span *ngIf="!last">, </span>
+            </ng-container>
+          </span>
+          — {{ s.name }}
+          <span class="rate">({{ s.hourlyRate | number: '1.0-2' }} USD/hr)</span>
+        </li>
+      </ul>
+
+      <ng-template #noServices>
+        <br><br>
+        <div class="no-services">No services</div>
+      </ng-template>
+    </div>
+  </td>
+</ng-container>
+
+      <tr
+        mat-row
+        *matRowDef="let row; columns: ['expandedDetail']"
+        class="detail-row"
+      ></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    </table>
+    <mat-paginator [pageSize]="10" [pageSizeOptions]="[10, 20, 30]"></mat-paginator>
+  </mat-card>
+</div>
