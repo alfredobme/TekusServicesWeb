@@ -47,6 +47,15 @@ assets/
    Ejemplo:
       { provide: API_URL, useValue: 'http://localhost:5041/api' }
    ```
+4. **Usuario de pruebas**
+   ```sh
+   El servicio UsersService implementa un mecanismo básico de autenticación utilizando Basic Authentication
+   con un usuario y contraseña predefinidos.
+   Estos usuarios se pueden configurar en la tabla Users.
+   
+   Ejemplo:
+   const credentials = btoa('pruebas:pruebas');
+   ```
 4. **Ejecutar la aplicación:**
    ```sh
    ng serve -o
