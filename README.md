@@ -62,3 +62,13 @@ assets/
 
 ## Servicios externos
 - Para la consulta de los países se usa el servicio externo **https://restcountries.com/**
+
+## Manejo de Proveedores
+<img width="1652" height="881" alt="image" src="https://github.com/user-attachments/assets/e9a3a677-3419-45b9-bdc4-ee205aba2817" />
+
+## Manejo de Servicios
+
+<img width="1652" height="878" alt="image" src="https://github.com/user-attachments/assets/a5633637-314f-40f2-8f8b-7770856ead42" />
+
+
+
